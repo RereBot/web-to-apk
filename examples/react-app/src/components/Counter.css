@@ -1,0 +1,62 @@
+/* Counter Component Styles */
+.counter-display {
+  text-align: center;
+  margin: var(--spacing-lg) 0;
+}
+
+.counter-value {
+  font-size: 4rem;
+  font-weight: bold;
+  color: var(--color-primary);
+  display: inline-block;
+  min-width: 120px;
+  transition: all var(--transition-fast);
+}
+
+.counter-value.animating {
+  animation: counterPulse 0.3s ease;
+}
+
+@keyframes counterPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); color: var(--color-primary-dark); }
+  100% { transform: scale(1); }
+}
+
+.counter-buttons {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+  flex-wrap: wrap;
+}
+
+.counter-info {
+  text-align: center;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .counter-value {
+    font-size: 3rem;
+    min-width: 100px;
+  }
+  
+  .counter-buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-sm);
+  }
+  
+  .counter-buttons .btn {
+    min-width: 120px;
+  }
+}
+
+@media (max-width: 480px) {
+  .counter-value {
+    font-size: 2.5rem;
+  }
+}

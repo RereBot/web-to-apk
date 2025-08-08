@@ -1,0 +1,30 @@
+{
+  "appName": "Basic HTML App",
+  "packageName": "com.example.basichtmlapp",
+  "version": "1.0.0",
+  "websiteUrl": "file://./index.html",
+  "icon": "./assets/icon.png",
+  "splashScreen": {
+    "backgroundColor": "#2196F3",
+    "showSpinner": true,
+    "spinnerColor": "#ffffff",
+    "fadeOutDuration": 300
+  },
+  "webView": {
+    "allowsInlineMediaPlayback": true,
+    "allowsBackForwardNavigationGestures": true,
+    "scrollEnabled": true,
+    "zoomEnabled": false,
+    "backgroundColor": "#ffffff"
+  },
+  "permissions": [
+    "INTERNET",
+    "ACCESS_NETWORK_STATE"
+  ],
+  "orientation": "portrait",
+  "theme": {
+    "primaryColor": "#2196F3",
+    "statusBarColor": "#1976D2",
+    "navigationBarColor": "#ffffff"
+  }
+}

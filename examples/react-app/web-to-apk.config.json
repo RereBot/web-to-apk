@@ -1,0 +1,39 @@
+{
+  "appName": "React App Example",
+  "packageName": "com.example.reactapp",
+  "version": "1.0.0",
+  "websiteUrl": "file://./dist/index.html",
+  "icon": "./public/assets/icon.png",
+  "splashScreen": {
+    "backgroundColor": "#282c34",
+    "showSpinner": true,
+    "spinnerColor": "#61dafb",
+    "fadeOutDuration": 500
+  },
+  "webView": {
+    "allowsInlineMediaPlaybook": true,
+    "allowsBackForwardNavigationGestures": false,
+    "limitsNavigationsToAppBoundDomains": true,
+    "scrollEnabled": true,
+    "zoomEnabled": false,
+    "fullscreen": false,
+    "backgroundColor": "#ffffff"
+  },
+  "permissions": [
+    "INTERNET",
+    "ACCESS_NETWORK_STATE",
+    "WRITE_EXTERNAL_STORAGE",
+    "CAMERA"
+  ],
+  "orientation": "portrait",
+  "theme": {
+    "primaryColor": "#61dafb",
+    "statusBarColor": "#20232a",
+    "navigationBarColor": "#ffffff"
+  },
+  "build": {
+    "minSdkVersion": 24,
+    "targetSdkVersion": 33,
+    "compileSdkVersion": 33
+  }
+}

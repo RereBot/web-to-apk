@@ -1,0 +1,131 @@
+Web-to-APK
+Copyright (c) 2025 Your Name or Company Name
+
+This software contains third-party libraries and components that are subject to their own licenses:
+
+================================================================================
+
+PRODUCTION DEPENDENCIES:
+
+@capacitor/android (^5.7.0)
+License: MIT
+Copyright: Ionic Team
+
+@capacitor/cli (^5.7.0)
+License: MIT
+Copyright: Ionic Team
+
+@capacitor/core (^5.7.0)
+License: MIT
+Copyright: Ionic Team
+
+chalk (^4.1.2)
+License: MIT
+Copyright: Sindre Sorhus
+
+commander (^12.0.0)
+License: MIT
+Copyright: TJ Holowaychuk
+
+inquirer (^9.2.15)
+License: MIT
+Copyright: Simon Boudrias
+
+ora (^7.0.1)
+License: MIT
+Copyright: Sindre Sorhus
+
+sharp (^0.33.2)
+License: Apache-2.0
+Copyright: Lovell Fuller and contributors
+
+================================================================================
+
+DEVELOPMENT DEPENDENCIES:
+
+@types/express (^4.17.21)
+License: MIT
+Copyright: Microsoft Corporation
+
+@types/inquirer (^9.0.7)
+License: MIT
+Copyright: Microsoft Corporation
+
+@types/jest (^29.5.12)
+License: MIT
+Copyright: Microsoft Corporation
+
+@types/node (^20.11.19)
+License: MIT
+Copyright: Microsoft Corporation
+
+@types/sharp (^0.32.0)
+License: MIT
+Copyright: Microsoft Corporation
+
+@types/superagent (^8.1.9)
+License: MIT
+Copyright: Microsoft Corporation
+
+@types/supertest (^6.0.3)
+License: MIT
+Copyright: Microsoft Corporation
+
+@typescript-eslint/eslint-plugin (^7.18.0)
+License: MIT
+Copyright: TypeScript ESLint contributors
+
+@typescript-eslint/parser (^7.18.0)
+License: BSD-2-Clause
+Copyright: TypeScript ESLint contributors
+
+axios (^1.6.7)
+License: MIT
+Copyright: Matt Zabriskie
+
+eslint (^8.57.1)
+License: MIT
+Copyright: JS Foundation and other contributors
+
+express (^4.18.2)
+License: MIT
+Copyright: TJ Holowaychuk
+
+form-data (^4.0.0)
+License: MIT
+Copyright: Felix Geisendörfer
+
+jest (^29.7.0)
+License: MIT
+Copyright: Meta Platforms, Inc. and affiliates
+
+prettier (^3.2.5)
+License: MIT
+Copyright: James Long
+
+puppeteer (^21.11.0)
+License: Apache-2.0
+Copyright: The Chromium Authors
+
+rimraf (^5.0.5)
+License: ISC
+Copyright: Isaac Z. Schlueter
+
+supertest (^6.3.4)
+License: MIT
+Copyright: TJ Holowaychuk
+
+ts-jest (^29.1.2)
+License: MIT
+Copyright: Kulshekhar Kabra
+
+typescript (^5.3.3)
+License: Apache-2.0
+Copyright: Microsoft Corporation
+
+================================================================================
+
+For the full license text of each dependency, please refer to their respective 
+package directories in node_modules/ or their official repositories.
+
+This project is licensed under the MIT License. See the LICENSE file for details.

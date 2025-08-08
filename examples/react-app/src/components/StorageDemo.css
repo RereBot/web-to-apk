@@ -1,0 +1,76 @@
+/* Storage Demo Component Styles */
+.storage-controls {
+  margin-bottom: var(--spacing-md);
+}
+
+.input-group {
+  margin-bottom: var(--spacing-sm);
+}
+
+.input-group input {
+  width: 100%;
+}
+
+.button-group {
+  display: flex;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+}
+
+.storage-display {
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-md);
+  min-height: 80px;
+  margin-bottom: var(--spacing-sm);
+}
+
+.stored-data {
+  font-family: monospace;
+  font-size: var(--font-size-sm);
+}
+
+.data-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-sm);
+  padding-bottom: var(--spacing-xs);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.timestamp {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+}
+
+.data-content {
+  word-break: break-all;
+  line-height: 1.4;
+}
+
+.no-data {
+  color: var(--color-text-secondary);
+  font-style: italic;
+  text-align: center;
+  padding: var(--spacing-md);
+}
+
+.storage-info {
+  text-align: center;
+  color: var(--color-text-secondary);
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .button-group {
+    flex-direction: column;
+  }
+  
+  .data-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-xs);
+  }
+}

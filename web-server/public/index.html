@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n-key="pageTitle"></title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%234C2E85'/%3E%3Cpath d='M30,30 C40,20 60,20 70,30' fill='none' stroke='%23EF476F' stroke-width='8' stroke-linecap='round'/%3E%3Cpath d='M25,40 v20' fill='none' stroke='%23ffffff' stroke-width='8' stroke-linecap='round'/%3E%3Cpath d='M75,40 v20' fill='none' stroke='%23ffffff' stroke-width='8' stroke-linecap='round'/%3E%3C/svg%3E">
+</head>
+<body>
+    <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <span class="logo-icon"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%234C2E85'/%3E%3Cpath d='M30,30 C40,20 60,20 70,30' fill='none' stroke='%23EF476F' stroke-width='8' stroke-linecap='round'/%3E%3Cpath d='M25,40 v20' fill='none' stroke='%23ffffff' stroke-width='8' stroke-linecap='round'/%3E%3Cpath d='M75,40 v20' fill='none' stroke='%23ffffff' stroke-width='8' stroke-linecap='round'/%3E%3C/svg%3E" alt="Logo"></span>
+                    <h1 data-i18n-key="logoTitle"></h1>
+                </div>
+                <nav class="main-nav">
+                    <a href="#" id="about-link" class="nav-link" data-i18n-key="aboutLink">About</a>
+                    <a href="#" id="help-link" class="nav-link" data-i18n-key="helpLink">Docs</a>
+                    <div class="language-switcher">
+                        <a href="#" class="lang-link" data-lang="en">EN</a>
+                        <span class="lang-separator">|</span>
+                        <a href="#" class="lang-link" data-lang="zh">中文</a>
+                    </div>
+                </nav>
+            </div>
+            <p class="subtitle" data-i18n-key="subtitle"></p>
+        </header>
+
+    <div class="page-container">
+        <main class="main">
+            <form id="buildForm" class="form" enctype="multipart/form-data">
+                <div class="form-section">
+                    <h2 data-i18n-key="basicInformationTitle"></h2>
+                    
+                    <div class="form-group">
+                        <label for="appName" data-i18n-key="appNameLabel"></label>
+                        <input type="text" id="appName" name="appName" 
+                               data-i18n-placeholder="appNamePlaceholder" maxlength="50">
+                        <small data-i18n-key="appNameHelp"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="websiteUrl" data-i18n-key="websiteUrlLabel"></label>
+                        <input type="url" id="websiteUrl" name="websiteUrl" 
+                               data-i18n-placeholder="websiteUrlPlaceholder">
+                        <small data-i18n-key="websiteUrlHelp"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="packageName" data-i18n-key="packageNameLabel"></label>
+                        <input type="text" id="packageName" name="packageName" 
+                               placeholder="com.example.myapp" pattern="^[a-z][a-z0-9_]*(\.[a-z][a-z0-9_]*)+$">
+                        <small data-i18n-key="packageNameHelp"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="version" data-i18n-key="versionLabel"></label>
+                        <input type="text" id="version" name="version" 
+                               data-i18n-placeholder="versionPlaceholder" pattern="^\d+\.\d+\.\d+$" value="1.0.0">
+                        <small data-i18n-key="versionHelp"></small>
+                    </div>
+
+                    <div class="form-group color-input-group">
+                        <label for="statusBarColor" data-i18n-key="statusBarColorLabel"></label>
+                        <div class="color-input-container">
+                            <input type="color" id="statusBarColor" name="statusBarColor" value="#4C2E85">
+                            <input type="text" id="statusBarColorText" placeholder="#4C2E85 或 rgb(76, 46, 133)" class="color-text-input">
+                        </div>
+                        <small data-i18n-key="statusBarColorHelp"></small>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h2 data-i18n-key="appIconTitle"></h2>
+                    
+                    <div class="form-group">
+                        <label for="icon" data-i18n-key="uploadIconLabel"></label>
+                        <div class="file-upload-area" id="fileUploadArea">
+                            <input type="file" id="icon" name="icon" accept="image/*" hidden>
+                            <div class="file-upload-content">
+                                <div class="file-upload-icon">📁</div>
+                                <p data-i18n-key="uploadIconText"></p>
+                                <small data-i18n-key="uploadIconFormats"></small>
+                            </div>
+                            <div class="file-preview" id="filePreview" style="display: none;">
+                                <img id="previewImage" alt="Icon preview">
+                                <button type="button" id="removeFile" class="remove-file">✕</button>
+                            </div>
+                        </div>
+                        <small data-i18n-key="uploadIconHelp"></small>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h2 data-i18n-key="advancedSettingsTitle"></h2>
+                    <div class="advanced-info">
+                        <p data-i18n-key="advancedSettingsInfo"></p>
+                        <ul>
+                            <li>✓ <span data-i18n-key="advancedSetting1"></span></li>
+                            <li>✓ <span data-i18n-key="advancedSetting2"></span></li>
+                            <li>✓ <span data-i18n-key="advancedSetting3"></span></li>
+                            <li>✓ <span data-i18n-key="advancedSetting4"></span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h2 data-i18n-key="buildOptionsTitle"></h2>
+                    
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="isRelease" name="isRelease">
+                            <span class="checkmark"></span>
+                            <span data-i18n-key="createReleaseLabel"></span>
+                        </label>
+                        <small data-i18n-key="createReleaseHelp"></small>
+                    </div>
+
+                    <div id="release-options-form" class="release-options" style="display: none;">
+                        <div class="form-group">
+                            <label for="keystoreFile" data-i18n-key="keystoreFileLabel"></label>
+                            <div class="file-upload-area" id="keystoreUploadArea">
+                                <input type="file" id="keystoreFile" name="keystoreFile" accept=".keystore,.jks" hidden>
+                                <div class="file-upload-content">
+                                    <div class="file-upload-icon">🔐</div>
+                                    <p data-i18n-key="keystoreUploadText"></p>
+                                    <small data-i18n-key="keystoreFormats"></small>
+                                </div>
+                                <div class="file-preview" id="keystorePreview" style="display: none;">
+                                    <span id="keystoreFileName"></span>
+                                    <button type="button" id="removeKeystore" class="remove-file">✕</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="keystorePassword" data-i18n-key="keystorePasswordLabel"></label>
+                            <input type="password" id="keystorePassword" name="keystorePassword" 
+                                   data-i18n-placeholder="keystorePasswordPlaceholder">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="keyAlias" data-i18n-key="keyAliasLabel"></label>
+                            <input type="text" id="keyAlias" name="keyAlias" 
+                                   data-i18n-placeholder="keyAliasPlaceholder">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="keyPassword" data-i18n-key="keyPasswordLabel"></label>
+                            <input type="password" id="keyPassword" name="keyPassword" 
+                                   data-i18n-placeholder="keyPasswordPlaceholder">
+                            <small data-i18n-key="keyPasswordHelp"></small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" id="buildButton" class="btn btn-primary">
+                        <span class="btn-text" data-i18n-key="buildButtonText"></span>
+                        <span class="btn-spinner" style="display: none;">
+                            <div class="spinner"></div>
+                            <span data-i18n-key="buildingText"></span>
+                        </span>
+                    </button>
+                </div>
+            </form>
+
+            <div id="buildStatus" class="build-status" style="display: none;">
+                <div class="status-content">
+                    <div class="status-icon">⏳</div>
+                    <h3 id="statusTitle" data-i18n-key="buildStatusTitle"></h3>
+                    <p id="statusMessage" data-i18n-key="buildStatusMessage"></p>
+                    <div class="progress-bar">
+                        <div class="progress-fill"></div>
+                        <div class="progress-text">0%</div>
+                    </div>
+                    <p class="status-message">正在准备构建...</p>
+                </div>
+            </div>
+
+            <div id="buildResult" class="build-result" style="display: none;">
+                <div class="result-success" id="resultSuccess" style="display: none;">
+                    <h3 data-i18n-key="buildSuccessTitle"></h3>
+                    <p data-i18n-key="buildSuccessMessage"></p>
+                    <div class="result-info">
+                        <div class="info-item">
+                            <strong data-i18n-key="resultAppName"></strong> <span id="resultAppName"></span>
+                        </div>
+                        <div class="info-item">
+                            <strong data-i18n-key="resultPackage"></strong> <span id="resultPackage"></span>
+                        </div>
+                        <div class="info-item">
+                            <strong data-i18n-key="resultVersion"></strong> <span id="resultVersion"></span>
+                        </div>
+                        <div class="info-item">
+                            <strong data-i18n-key="resultBuildTime"></strong> <span id="resultBuildTime"></span>
+                        </div>
+                    </div>
+                    <div class="result-actions">
+                        <a id="downloadLink" href="#" class="btn btn-success" download>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="button-icon">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                            </svg>
+                            <span data-i18n-key="downloadApkText"></span>
+                        </a>
+                        <button type="button" id="buildAnother" class="btn btn-secondary">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="button-icon">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3" />
+                            </svg>
+                            <span data-i18n-key="buildAnotherText"></span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="result-error" id="resultError" style="display: none;">
+                    <div class="result-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="status-icon error-icon">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" />
+                        </svg>
+                    </div>
+                    <h3 data-i18n-key="buildFailedTitle"></h3>
+                    <p id="errorMessage" data-i18n-key="buildFailedMessage"></p>
+                    <div class="result-actions">
+                        <button type="button" id="tryAgain" class="btn btn-primary" data-i18n-key="tryAgainText">
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <footer class="footer">
+        <p data-i18n-key="footerText"></p>
+    </footer>
+
+    <!-- Help Modal -->
+    <div id="helpModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 data-i18n-key="helpModalTitle"></h2>
+                <button class="modal-close" id="help-modal-close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h3 data-i18n-key="helpHowToTitle"></h3>
+                <ol>
+                    <li data-i18n-key="helpStep1"></li>
+                    <li data-i18n-key="helpStep2"></li>
+                    <li data-i18n-key="helpStep3"></li>
+                    <li data-i18n-key="helpStep4"></li>
+                </ol>
+                
+                <h3 data-i18n-key="helpPackageTitle"></h3>
+                <p data-i18n-key="helpPackageText"></p>
+                
+                <h3 data-i18n-key="helpIconTitle"></h3>
+                <ul>
+                    <li data-i18n-key="helpIconReq1"></li>
+                    <li data-i18n-key="helpIconReq2"></li>
+                    <li data-i18n-key="helpIconReq3"></li>
+                    <li data-i18n-key="helpIconReq4"></li>
+                </ul>
+                
+                <h3 data-i18n-key="helpInstallTitle"></h3>
+                <p data-i18n-key="helpInstallText"></p>
+                <ol>
+                    <li data-i18n-key="helpInstallStep1"></li>
+                    <li data-i18n-key="helpInstallStep2"></li>
+                    <li data-i18n-key="helpInstallStep3"></li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Modal -->
+    <div id="aboutModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 data-i18n-key="aboutModalTitle"></h2>
+                <button class="modal-close" id="about-modal-close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p data-i18n-key="aboutDescription"></p>
+                
+                <h3 data-i18n-key="aboutFeaturesTitle"></h3>
+                <ul>
+                    <li>✓ <span data-i18n-key="aboutFeature1"></span></li>
+                    <li>✓ <span data-i18n-key="aboutFeature2"></span></li>
+                    <li>✓ <span data-i18n-key="aboutFeature3"></span></li>
+                    <li>✓ <span data-i18n-key="aboutFeature4"></span></li>
+                    <li>✓ <span data-i18n-key="aboutFeature5"></span></li>
+                </ul>
+                
+                <h3 data-i18n-key="aboutTechTitle"></h3>
+                <ul>
+                    <li data-i18n-key="aboutTech1"></li>
+                    <li data-i18n-key="aboutTech2"></li>
+                    <li data-i18n-key="aboutTech3"></li>
+                </ul>
+                
+                <p><strong data-i18n-key="aboutVersion"></strong></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Basic HTML App - Web-to-APK Example">
+    <title>Basic HTML App</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="assets/icon.png" type="image/png">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <img src="assets/logo.png" alt="App Logo" class="logo">
+            <h1>Basic HTML App</h1>
+            <p class="subtitle">Web-to-APK Sample App</p>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Welcome Section -->
+            <section class="welcome-section">
+                <h2>欢迎使用</h2>
+                <p>这是一个使用Web-to-APK工具创建的基础HTML应用示例。</p>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🚀</div>
+                        <h3>快速构建</h3>
+                        <p>一键将Web应用转换为Android APK</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📱</div>
+                        <h3>移动优化</h3>
+                        <p>专为移动设备优化的用户界面</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">⚡</div>
+                        <h3>高性能</h3>
+                        <p>基于Capacitor的原生性能</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Interactive Section -->
+            <section class="interactive-section">
+                <h2>交互功能</h2>
+                
+                <!-- Counter -->
+                <div class="counter-widget">
+                    <h3>计数器</h3>
+                    <div class="counter-display">
+                        <span id="counter">0</span>
+                    </div>
+                    <div class="counter-buttons">
+                        <button id="decrementBtn" class="btn btn-secondary">-</button>
+                        <button id="resetBtn" class="btn btn-outline">重置</button>
+                        <button id="incrementBtn" class="btn btn-primary">+</button>
+                    </div>
+                </div>
+
+                <!-- Form -->
+                <div class="form-widget">
+                    <h3>用户信息</h3>
+                    <form id="userForm">
+                        <div class="form-group">
+                            <label for="userName">姓名：</label>
+                            <input type="text" id="userName" name="userName" placeholder="请输入您的姓名">
+                        </div>
+                        <div class="form-group">
+                            <label for="userEmail">邮箱：</label>
+                            <input type="email" id="userEmail" name="userEmail" placeholder="请输入您的邮箱">
+                        </div>
+                        <div class="form-group">
+                            <label for="userMessage">留言：</label>
+                            <textarea id="userMessage" name="userMessage" placeholder="请留下您的留言"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full">提交</button>
+                    </form>
+                </div>
+
+                <!-- Storage Demo -->
+                <div class="storage-widget">
+                    <h3>本地存储</h3>
+                    <div class="storage-controls">
+                        <input type="text" id="storageInput" placeholder="输入要保存的内容">
+                        <button id="saveBtn" class="btn btn-primary">保存</button>
+                        <button id="loadBtn" class="btn btn-secondary">加载</button>
+                        <button id="clearBtn" class="btn btn-outline">清除</button>
+                    </div>
+                    <div id="storageDisplay" class="storage-display"></div>
+                </div>
+            </section>
+
+            <!-- Info Section -->
+            <section class="info-section">
+                <h2>应用信息</h2>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <strong>版本：</strong>
+                        <span>1.0.0</span>
+                    </div>
+                    <div class="info-item">
+                        <strong>构建工具：</strong>
+                        <span>Web-to-APK</span>
+                    </div>
+                    <div class="info-item">
+                        <strong>平台：</strong>
+                        <span id="platformInfo">Web</span>
+                    </div>
+                    <div class="info-item">
+                        <strong>用户代理：</strong>
+                        <span id="userAgent"></span>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Copyright © 2025 RereBot.com</p>
+            <p>
+                <a href="https://github.com/msgjp/web-to-apk" target="_blank">GitHub</a> |
+                <a href="#" onclick="showAbout()">关于</a>
+            </p>
+        </footer>
+    </div>
+
+    <!-- About Modal -->
+    <div id="aboutModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="hideAbout()">&times;</span>
+            <h2>关于此应用</h2>
+            <p>This is a sample application created with the Web-to-APK tool, demonstrating how to convert basic HTML pages to Android APK.</p>
+            <h3>主要特性：</h3>
+            <ul>
+                <li>响应式设计</li>
+                <li>交互功能</li>
+                <li>本地存储</li>
+                <li>移动优化</li>
+            </ul>
+            <button onclick="hideAbout()" class="btn btn-primary">关闭</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+{
+  "name": "basic-html-example",
+  "version": "1.0.0",
+  "description": "Basic HTML example for Web-to-APK",
+  "main": "index.html",
+  "scripts": {
+    "serve": "python -m http.server 8000",
+    "build": "web-to-apk build",
+    "build:release": "web-to-apk build --release"
+  },
+  "keywords": [
+    "web-to-apk",
+    "html",
+    "android",
+    "apk",
+    "example"
+  ],
+  "author": "Web-to-APK Team",
+  "license": "MIT",
+  "devDependencies": {
+    "web-to-apk": "^1.0.0"
+  }
+}

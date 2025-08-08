@@ -1,0 +1,1 @@
+{"version":3,"file":"VersionManager.d.ts","sourceRoot":"","sources":["../../src/interfaces/VersionManager.ts"],"names":[],"mappings":"AAAA;;GAEG;AACH,MAAM,WAAW,cAAc;IAC7B;;OAEG;IACH,mBAAmB,CAAC,OAAO,EAAE,MAAM,GAAG,MAAM,CAAC;IAE7C;;OAEG;IACH,cAAc,CAAC,OAAO,EAAE,MAAM,EAAE,WAAW,EAAE,MAAM,GAAG,IAAI,CAAC;IAE3D;;OAEG;IACH,kBAAkB,CAAC,OAAO,EAAE,MAAM,EAAE,GAAG,MAAM,CAAC;CAC/C"}
