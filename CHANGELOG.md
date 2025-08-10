@@ -36,7 +36,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Capacitor Assets Tool**: Fixed potential errors with `@capacitor/assets` tool when `manifest.json` is not found.
 - **Concurrent Build Prevention**: Fixed Gradle cache file locking issues caused by concurrent build requests through frontend button disabling and backend logic reinforcement.
 
-## [1.0.0] - 2024-02-XX
+## [1.0.0] - 2025-08-08
 
 ### Added
 
