@@ -124,6 +124,7 @@
   "errorAppNameRequired": "App name is required",
   "errorPackageNameRequired": "Package name is required",
   "errorInvalidPackageName": "Invalid package name format. Use format like com.example.app",
+  "errorPackageNameJavaKeyword": "Package name contains Java keywords (like \"final\", \"class\", etc.). Please use different names.",
   "errorVersionRequired": "Version is required",
   "errorInvalidVersion": "Version must be in format X.Y.Z (e.g., 1.0.0)",
   "errorKeystoreFileRequired": "Keystore file is required for release builds",

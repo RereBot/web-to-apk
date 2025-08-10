@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  web-to-apk:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: rerebot/web-to-apk:latest
+    container_name: web-to-apk
+    ports:
+      - "3000:3000"
+    volumes:
+      # Persistent storage for downloads
+      - web-to-apk-downloads:/app/web-server/downloads
+      # Temporary uploads (can be ephemeral)
+      - web-to-apk-uploads:/app/web-server/uploads
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "/usr/local/bin/healthcheck.sh"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+    # Resource limits
+    deploy:
+      resources:
+        limits:
+          memory: 4G
+          cpus: '2.0'
+        reservations:
+          memory: 2G
+          cpus: '1.0'
+
+volumes:
+  web-to-apk-downloads:
+    driver: local
+  web-to-apk-uploads:
+    driver: local

@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  web-to-apk-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: rerebot/web-to-apk:dev
+    container_name: web-to-apk-dev
+    ports:
+      - "3000:3000"
+    volumes:
+      # Mount source code for development
+      - ./web-server:/app/web-server
+      - ./package.json:/app/package.json
+      # Persistent storage
+      - web-to-apk-dev-downloads:/app/web-server/downloads
+      - web-to-apk-dev-uploads:/app/web-server/uploads
+    environment:
+      - NODE_ENV=development
+      - PORT=3000
+      - DEBUG=web-to-apk:*
+    restart: unless-stopped
+    # Enable development features
+    stdin_open: true
+    tty: true
+
+volumes:
+  web-to-apk-dev-downloads:
+    driver: local
+  web-to-apk-dev-uploads:
+    driver: local

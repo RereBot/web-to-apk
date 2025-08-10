@@ -19,6 +19,22 @@ const __dirname = path.dirname(__filename);
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Java reserved keywords that cannot be used in package names
+const JAVA_KEYWORDS = [
+  'abstract', 'assert', 'boolean', 'break', 'byte', 'case', 'catch', 'char', 'class', 'const',
+  'continue', 'default', 'do', 'double', 'else', 'enum', 'extends', 'final', 'finally', 'float',
+  'for', 'goto', 'if', 'implements', 'import', 'instanceof', 'int', 'interface', 'long', 'native',
+  'new', 'package', 'private', 'protected', 'public', 'return', 'short', 'static', 'strictfp',
+  'super', 'switch', 'synchronized', 'this', 'throw', 'throws', 'transient', 'try', 'void',
+  'volatile', 'while', 'true', 'false', 'null'
+];
+
+// Helper function to check for Java keywords in package name
+const containsJavaKeywords = (packageName) => {
+  const parts = packageName.split('.');
+  return parts.some(part => JAVA_KEYWORDS.includes(part.toLowerCase()));
+};
+
 // Security middleware
 app.use(helmet({
   contentSecurityPolicy: {
@@ -1869,6 +1885,16 @@ app.post('/api/build', upload.fields([
       });
     }
 
+    if (containsJavaKeywords(config.packageName)) {
+      return sendJSONResponse(res, 400, {
+        status: 'error',
+        error: 'Package name contains Java keywords (like "final", "class", etc.). Please use different names.',
+        category: 'VALIDATION_ERROR',
+        solution: 'Change package name parts that are Java keywords to different names',
+        troubleshooting: ['Avoid Java keywords like: final, class, interface, public, private, etc.', 'Use descriptive names like: com.mycompany.myapp']
+      });
+    }
+
     // Process icon
     let iconPath = null;
     if (req.files && req.files.icon && req.files.icon[0]) {
@@ -2031,6 +2057,16 @@ app.post('/api/build-release', upload.fields([
         category: 'VALIDATION_ERROR',
         solution: getMessage('packageNameSolution', lang),
         troubleshooting: getMessage('packageNameTroubleshooting', lang).split(', ')
+      });
+    }
+
+    if (containsJavaKeywords(config.packageName)) {
+      return sendJSONResponse(res, 400, {
+        status: 'error',
+        error: 'Package name contains Java keywords (like "final", "class", etc.). Please use different names.',
+        category: 'VALIDATION_ERROR',
+        solution: 'Change package name parts that are Java keywords to different names',
+        troubleshooting: ['Avoid Java keywords like: final, class, interface, public, private, etc.', 'Use descriptive names like: com.mycompany.myapp']
       });
     }
 
@@ -2268,7 +2304,7 @@ const startServer = async () => {
     await ensureDirectories();
     console.log('Required directories created');
 
-    app.listen(PORT, '127.0.0.1', () => {
+    app.listen(PORT, '0.0.0.0', () => {
       console.log(`Web-to-APK server running on port ${PORT}`);
       console.log(`Visit http://localhost:${PORT} to use the service`);
     });

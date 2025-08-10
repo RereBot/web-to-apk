@@ -98,6 +98,46 @@ We hope Web-to-APK becomes your most reliable bridge connecting web creativity t
 
 ## Installation
 
+### 🐳 Quick Start with Docker (Recommended)
+
+The fastest way to get started is using Docker. No complex environment setup required!
+
+#### Option 1: Docker Run
+
+```bash
+# Pull and run the latest image
+docker run -d \
+  --name web-to-apk \
+  -p 3000:3000 \
+  -v web-to-apk-downloads:/app/web-server/downloads \
+  rerebot/web-to-apk:latest
+
+# Access the web interface
+open http://localhost:3000
+```
+
+#### Option 2: Docker Compose
+
+```bash
+# Clone the repository
+git clone https://github.com/RereBot/web-to-apk.git
+cd web-to-apk
+
+# Start the service
+docker-compose up -d
+
+# Access the web interface
+open http://localhost:3000
+
+# View logs
+docker-compose logs -f
+
+# Stop the service
+docker-compose down
+```
+
+### Manual Installation
+
 ### Recommended: WSL 2 Environment Setup
 
 **We strongly recommend using WSL 2 (Windows Subsystem for Linux) for development**, as it provides the best compatibility and performance.
@@ -220,7 +260,20 @@ sudo apt install android-sdk -y
 
 ## Quick Start
 
-### Using Web Interface (Recommended for Beginners)
+### Using Docker (Recommended)
+
+1. **Pull and run with Docker**:
+   ```bash
+   # Using Docker Compose (recommended)
+   docker-compose up -d
+   
+   # Or using Docker run
+   docker run -d -p 3000:3000 --name web-to-apk rerebot/web-to-apk:latest
+   ```
+
+2. **Access the web interface**: Open http://localhost:3000
+
+### Using Web Interface (Local Development)
 
 1. **Start the web server**:
    ```bash
@@ -463,12 +516,15 @@ npm run dev
 
 ## 🗺️ Roadmap
 
-### Upcoming Features
+### Recently Added Features ✅
 
-- **Docker Support** - Coming Soon! 🐳
+- **Docker Support** - Now Available! 🐳
   - Complete Docker containerization for easy deployment
   - Docker Compose setup for development environment
   - Pre-built Docker images for production use
+  - Cross-platform compatibility (Windows, Linux, macOS)
+
+### Upcoming Features
 
 - **iOS Support** - Planned for v2.0
   - Convert websites to iOS applications

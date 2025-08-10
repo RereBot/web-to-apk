@@ -289,10 +289,13 @@ function initializePackageNameValidation() {
     // Keep format validation logic only, remove App Name linkage
     packageNameInput.addEventListener('input', function() {
         const value = this.value;
-        const isValid = /^[a-z][a-z0-9_]*(\.[a-z][a-z0-9_]*)+$/.test(value);
+        const isValidFormat = /^[a-z][a-z0-9_]*(\.[a-z][a-z0-9_]*)+$/.test(value);
+        const hasJavaKeywords = containsJavaKeywords(value);
         
-        if (value && !isValid) {
+        if (value && !isValidFormat) {
             this.setCustomValidity('Package name must be in format com.example.app (lowercase, dots to separate)');
+        } else if (value && hasJavaKeywords) {
+            this.setCustomValidity('Package name contains Java keywords (like "final", "class", etc.). Please use different names.');
         } else {
             this.setCustomValidity('');
         }
@@ -378,6 +381,16 @@ function generatePackageNameFromUrl(url) {
     }
 }
 
+// Java reserved keywords that cannot be used in package names
+const JAVA_KEYWORDS = [
+    'abstract', 'assert', 'boolean', 'break', 'byte', 'case', 'catch', 'char', 'class', 'const',
+    'continue', 'default', 'do', 'double', 'else', 'enum', 'extends', 'final', 'finally', 'float',
+    'for', 'goto', 'if', 'implements', 'import', 'instanceof', 'int', 'interface', 'long', 'native',
+    'new', 'package', 'private', 'protected', 'public', 'return', 'short', 'static', 'strictfp',
+    'super', 'switch', 'synchronized', 'this', 'throw', 'throws', 'transient', 'try', 'void',
+    'volatile', 'while', 'true', 'false', 'null'
+];
+
 // Helper function to validate package name format
 function isValidPackageNameFormat(packageName) {
     // Android package name specification: at least two parts, each part starts with a letter
@@ -388,6 +401,12 @@ function isValidPackageNameFormat(packageName) {
         // Each part must start with a letter, contain only letters, numbers, underscores
         return /^[a-z][a-z0-9_]*$/.test(part) && part.length > 0;
     });
+}
+
+// Helper function to check for Java keywords in package name
+function containsJavaKeywords(packageName) {
+    const parts = packageName.split('.');
+    return parts.some(part => JAVA_KEYWORDS.includes(part.toLowerCase()));
 }
 
 // Initialize error styling clearance on input
@@ -609,6 +628,10 @@ function validateForm() {
     } else if (!/^[a-z][a-z0-9_]*(\.[a-z][a-z0-9_]*)+$/.test(packageName)) {
         addErrorStyling('packageName');
         showError(t('errorInvalidPackageName', 'Invalid package name format. Use format like com.example.app'));
+        hasErrors = true;
+    } else if (containsJavaKeywords(packageName)) {
+        addErrorStyling('packageName');
+        showError(t('errorPackageNameJavaKeyword', 'Package name contains Java keywords (like "final", "class", etc.). Please use different names.'));
         hasErrors = true;
     }
     

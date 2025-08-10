@@ -86,6 +86,72 @@
 - **APK签名**：支持调试和发布版本的APK签名
 - **发布版构建**：完整的发布版APK构建流程，包括密钥库管理和安全签名
 
+## 🚀 快速开始
+
+### 🐳 使用 Docker 快速开始（推荐）
+
+最快的开始方式是使用 Docker，无需复杂的环境配置！
+
+#### 方式一：Docker Run
+
+```bash
+# 拉取并运行最新镜像
+docker run -d \
+  --name web-to-apk \
+  -p 3000:3000 \
+  -v web-to-apk-downloads:/app/web-server/downloads \
+  rerebot/web-to-apk:latest
+
+# 访问 Web 界面
+open http://localhost:3000
+```
+
+#### 方式二：Docker Compose
+
+```bash
+# 克隆仓库
+git clone https://github.com/RereBot/web-to-apk.git
+cd web-to-apk
+
+# 启动服务
+docker-compose up -d
+
+# 访问 Web 界面
+open http://localhost:3000
+
+# 查看日志
+docker-compose logs -f
+
+# 停止服务
+docker-compose down
+```
+
+### Web 界面使用（本地开发）
+
+1. **启动 Web 服务器**：
+   ```bash
+   # 启动 Web 服务器
+   # 简单直接启动方式 (推荐用于开发)
+   node web-server/server.js
+   
+   # 或使用 npm 脚本
+   npm run web-server
+   ```
+
+2. **打开浏览器** 并访问 `http://localhost:3000`
+
+3. **配置应用信息**：
+   - 输入应用名称和包名
+   - 提供要转换的网站URL
+   - 上传自定义图标（可选）
+   - 根据需要配置高级设置
+
+4. **构建APK**：
+   - 点击"构建APK"生成调试版本
+   - 或勾选"创建发布版本"并上传密钥库文件生成签名APK
+
+5. **下载**：构建完成后，下载您的APK文件
+
 ## 🛠️ 安装和环境准备
 
 ### 系统要求
@@ -911,12 +977,15 @@ chore: 构建过程或辅助工具的变动
 
 ## 🗺️ 未来路线图
 
-### 即将推出的功能
+### 最新添加功能 ✅
 
-- **Docker 支持** - 即将推出！🐳
+- **Docker 支持** - 现已可用！🐳
   - 完整的 Docker 容器化，便于部署
   - 开发环境的 Docker Compose 配置
   - 生产环境的预构建 Docker 镜像
+  - 跨平台兼容性（Windows、Linux、macOS）
+
+### 即将推出的功能
 
 - **iOS 支持** - 计划在 v2.0 版本
   - 将网站转换为 iOS 应用程序
