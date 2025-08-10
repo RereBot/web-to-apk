@@ -2,28 +2,57 @@
 
 本指南介绍如何使用 Docker 部署和开发 Web-to-APK 工具。
 
+## 系统要求
+
+### 推荐配置
+- **内存**: 4GB RAM 或更高
+- **磁盘空间**: 10GB 可用空间
+- **网络**: 稳定的互联网连接
+
+### 最低配置（不推荐）
+- **内存**: 2GB RAM（可能导致构建缓慢或失败）
+- **磁盘空间**: 5GB 可用空间
+- **网络**: 稳定的互联网连接
+
 ## 快速开始
 
-### 使用 Docker Run
+### 标准配置（推荐）
+
+适用于 4GB+ 内存的系统：
 
 ```bash
-# 拉取并运行最新镜像
-docker run -d \
-  --name web-to-apk \
-  -p 3000:3000 \
-  -v web-to-apk-downloads:/app/web-server/downloads \
-  rerebot/web-to-apk:latest
+# 克隆仓库
+git clone https://github.com/RereBot/web-to-apk.git
+cd web-to-apk
+
+# 启动服务
+docker-compose up -d
 
 # 访问 Web 界面
 open http://localhost:3000
 ```
 
-### 使用 Docker Compose
+### 低内存配置（谨慎使用）
+
+适用于 2-4GB 内存的系统：
+
+⚠️ **警告**: 此配置可能导致构建缓慢或构建失败。
 
 ```bash
-# 启动服务
-docker-compose up -d
+# 克隆仓库
+git clone https://github.com/RereBot/web-to-apk.git
+cd web-to-apk
 
+# 使用低内存配置启动
+docker-compose -f docker-compose.low-memory.yml up -d
+
+# 访问 Web 界面
+open http://localhost:3000
+```
+
+### 其他命令
+
+```bash
 # 查看日志
 docker-compose logs -f
 

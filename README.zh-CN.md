@@ -92,21 +92,7 @@
 
 最快的开始方式是使用 Docker，无需复杂的环境配置！
 
-#### 方式一：Docker Run
-
-```bash
-# 拉取并运行最新镜像
-docker run -d \
-  --name web-to-apk \
-  -p 3000:3000 \
-  -v web-to-apk-downloads:/app/web-server/downloads \
-  rerebot/web-to-apk:latest
-
-# 访问 Web 界面
-open http://localhost:3000
-```
-
-#### 方式二：Docker Compose
+#### 标准配置（推荐，适用于 4GB+ 内存）
 
 ```bash
 # 克隆仓库
@@ -118,7 +104,29 @@ docker-compose up -d
 
 # 访问 Web 界面
 open http://localhost:3000
+```
 
+#### 低内存配置（2-4GB 内存）
+
+⚠️ **警告**: 低内存配置可能导致构建缓慢甚至构建失败。仅在系统资源有限时使用。
+
+```bash
+# 克隆仓库
+git clone https://github.com/RereBot/web-to-apk.git
+cd web-to-apk
+
+# 使用低内存配置启动
+docker-compose -f docker-compose.low-memory.yml up -d
+
+# 访问 Web 界面
+open http://localhost:3000
+```
+
+**注意**: 如果使用低内存配置时遇到构建失败，建议升级系统内存或使用更强大的服务器。
+
+#### 其他命令
+
+```bash
 # 查看日志
 docker-compose logs -f
 
@@ -156,11 +164,20 @@ docker-compose down
 
 ### 系统要求
 
-- **Node.js**: 版本 16.0 或更高
-- **npm**: 版本 7.0 或更高
+#### Docker 使用（推荐）
+- **内存**: 4GB RAM 或更高（推荐）
+- **内存**: 2GB RAM 最低要求（可能导致构建缓慢或失败）
+- **磁盘空间**: 10GB 可用空间
+- **网络**: 稳定的互联网连接
+
+#### 手动安装
+- **Node.js**: 版本 20.0 或更高（推荐）
+- **npm**: 版本 8.0 或更高
 - **Java JDK**: 版本 17 或更高
 - **Android SDK**: API Level 24 或更高
 - **Gradle**: 版本 8.0 或更高
+- **内存**: 4GB RAM 或更高（推荐）
+- **磁盘空间**: 10GB 可用空间
 
 ### 本地开发环境搭建 (推荐 WSL)
 

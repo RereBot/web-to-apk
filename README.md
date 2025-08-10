@@ -90,11 +90,20 @@ We hope Web-to-APK becomes your most reliable bridge connecting web creativity t
 
 ## System Requirements
 
+### For Docker Usage (Recommended)
+- **Memory**: 4GB RAM or higher (recommended)
+- **Memory**: 2GB RAM minimum (may cause slower builds or failures)
+- **Disk Space**: 10GB available space
+- **Network**: Stable internet connection
+
+### For Manual Installation
 - **Node.js**: Version 20.0 or higher (recommended)
 - **npm**: Version 8.0 or higher
 - **Java JDK**: Version 17 or higher
 - **Android SDK**: API Level 24 or higher
 - **Gradle**: Version 8.0 or higher
+- **Memory**: 4GB RAM or higher (recommended)
+- **Disk Space**: 10GB available space
 
 ## Installation
 
@@ -102,21 +111,7 @@ We hope Web-to-APK becomes your most reliable bridge connecting web creativity t
 
 The fastest way to get started is using Docker. No complex environment setup required!
 
-#### Option 1: Docker Run
-
-```bash
-# Pull and run the latest image
-docker run -d \
-  --name web-to-apk \
-  -p 3000:3000 \
-  -v web-to-apk-downloads:/app/web-server/downloads \
-  rerebot/web-to-apk:latest
-
-# Access the web interface
-open http://localhost:3000
-```
-
-#### Option 2: Docker Compose
+#### Standard Configuration (Recommended for 4GB+ RAM)
 
 ```bash
 # Clone the repository
@@ -128,7 +123,29 @@ docker-compose up -d
 
 # Access the web interface
 open http://localhost:3000
+```
 
+#### Low-Memory Configuration (2-4GB RAM)
+
+⚠️ **WARNING**: Low-memory configuration may result in slower builds or build failures. Use only if you have limited system resources.
+
+```bash
+# Clone the repository
+git clone https://github.com/RereBot/web-to-apk.git
+cd web-to-apk
+
+# Start with low-memory configuration
+docker-compose -f docker-compose.low-memory.yml up -d
+
+# Access the web interface
+open http://localhost:3000
+```
+
+**Note**: If you experience build failures with the low-memory configuration, consider upgrading your system memory or using a more powerful server.
+
+#### Additional Commands
+
+```bash
 # View logs
 docker-compose logs -f
 

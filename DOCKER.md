@@ -2,28 +2,57 @@
 
 This guide explains how to use Web-to-APK with Docker for easy deployment and development.
 
+## System Requirements
+
+### Recommended Configuration
+- **Memory**: 4GB RAM or higher
+- **Disk Space**: 10GB available space
+- **Network**: Stable internet connection
+
+### Minimum Configuration (Not Recommended)
+- **Memory**: 2GB RAM (may cause slow builds or failures)
+- **Disk Space**: 5GB available space
+- **Network**: Stable internet connection
+
 ## Quick Start
 
-### Using Docker Run
+### Standard Configuration (Recommended)
+
+For systems with 4GB+ RAM:
 
 ```bash
-# Pull and run the latest image
-docker run -d \
-  --name web-to-apk \
-  -p 3000:3000 \
-  -v web-to-apk-downloads:/app/web-server/downloads \
-  rerebot/web-to-apk:latest
+# Clone the repository
+git clone https://github.com/RereBot/web-to-apk.git
+cd web-to-apk
+
+# Start the service
+docker-compose up -d
 
 # Access the web interface
 open http://localhost:3000
 ```
 
-### Using Docker Compose
+### Low-Memory Configuration (Use with Caution)
+
+For systems with 2-4GB RAM:
+
+⚠️ **WARNING**: This configuration may result in slower builds or build failures.
 
 ```bash
-# Start the service
-docker-compose up -d
+# Clone the repository
+git clone https://github.com/RereBot/web-to-apk.git
+cd web-to-apk
 
+# Start with low-memory configuration
+docker-compose -f docker-compose.low-memory.yml up -d
+
+# Access the web interface
+open http://localhost:3000
+```
+
+### Additional Commands
+
+```bash
 # View logs
 docker-compose logs -f
 

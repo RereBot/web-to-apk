@@ -1,6 +1,6 @@
 {
   "name": "web-to-apk",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Convert web applications to Android APK files using Capacitor",
   "main": "lib/index.js",
   "bin": {

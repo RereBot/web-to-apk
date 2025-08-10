@@ -5,6 +5,20 @@ All notable changes to the Web-to-APK project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.1] - 2025-08-10
+
+### Added
+- **Low-Memory Configuration**: Added `docker-compose.low-memory.yml` for systems with 2-4GB RAM
+- **Memory-Optimized Environment Variables**: Added GRADLE_OPTS and NODE_OPTIONS for resource-constrained environments
+
+### Changed
+- **Simplified Deployment**: Removed automated deployment script in favor of clear manual instructions
+- **System Requirements**: Focused system requirements on memory only, removed CPU core specifications
+- **Documentation**: Updated all documentation to use unified GitHub repository URL and directory structure
+
+### Fixed
+- **Resource Limits**: Removed resource limits from standard configuration to allow full system performance utilization
+
 ## [1.1.0] - 2025-08-10
 
 ### Added

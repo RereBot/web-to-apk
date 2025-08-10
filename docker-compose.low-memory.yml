@@ -6,7 +6,7 @@ services:
       context: .
       dockerfile: Dockerfile
     image: rerebot/web-to-apk:latest
-    container_name: web-to-apk
+    container_name: web-to-apk-low-memory
     ports:
       - "3000:3000"
     volumes:
@@ -17,14 +17,22 @@ services:
     environment:
       - NODE_ENV=production
       - PORT=3000
+      - GRADLE_OPTS=-Xmx768m
+      - NODE_OPTIONS=--max-old-space-size=1024
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "/usr/local/bin/healthcheck.sh"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-      start_period: 60s
-
+      interval: 60s
+      timeout: 30s
+      retries: 5
+      start_period: 120s
+    # Resource limits for low-memory systems
+    deploy:
+      resources:
+        limits:
+          memory: 1.8G
+        reservations:
+          memory: 512M
 
 volumes:
   web-to-apk-downloads:
