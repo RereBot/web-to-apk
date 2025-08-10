@@ -1,22 +1,22 @@
-# Web-to-APK Docker 交付物清单
+# Web-to-APK Docker Deliverables List
 
-**交付日期:** 2025年8月9日  
-**阶段:** 第一阶段 Windows 环境测试完成  
-**状态:** ✅ 准备就绪，等待 Ubuntu 环境验证  
+**Delivery Date:** August 9, 2025  
+**Phase:** Phase 1 Windows Environment Testing Completed  
+**Status:** ✅ Ready, awaiting Ubuntu environment verification  
 
-## 📦 交付物列表
+## 📦 Deliverables List
 
-### 🐳 Docker 镜像和配置文件
+### 🐳 Docker Images and Configuration Files
 
-| 文件名 | 大小 | 描述 | 状态 |
-|--------|------|------|------|
-| `Dockerfile` | 2.8KB | Docker 镜像构建文件 | ✅ 完成 |
-| `docker-compose.yml` | 1.2KB | 生产环境编排配置 | ✅ 完成 |
-| `docker-compose.dev.yml` | 0.8KB | 开发环境编排配置 | ✅ 完成 |
-| `docker-entrypoint.sh` | 1.1KB | 容器启动脚本 | ✅ 完成 |
-| `healthcheck.sh` | 0.5KB | 健康检查脚本 | ✅ 完成 |
-| `.dockerignore` | 0.8KB | Docker 构建忽略文件 | ✅ 完成 |
-| `web-to-apk-docker-image.tar` | 3.12GB | 导出的 Docker 镜像 | ✅ 完成 |
+| Filename | Size | Description | Status |
+|----------|------|-------------|--------|
+| `Dockerfile` | 2.8KB | Docker image build file | ✅ Complete |
+| `docker-compose.yml` | 1.2KB | Production environment orchestration config | ✅ Complete |
+| `docker-compose.dev.yml` | 0.8KB | Development environment orchestration config | ✅ Complete |
+| `docker-entrypoint.sh` | 1.1KB | Container startup script | ✅ Complete |
+| `healthcheck.sh` | 0.5KB | Health check script | ✅ Complete |
+| `.dockerignore` | 0.8KB | Docker build ignore file | ✅ Complete |
+| `web-to-apk-docker-image.tar` | 3.12GB | Exported Docker image | ✅ Complete |
 
 ### 📚 文档文件
 

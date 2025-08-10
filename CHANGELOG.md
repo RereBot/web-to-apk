@@ -7,20 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.1.0] - 2025-08-10
 
-### Added (新增)
-- 全面 Docker 支持，实现一键启动与跨平台部署，极大简化了开发和使用门槛。
-- 增强了前端和后端的应用包名验证，防止用户输入 Java 保留关键字导致构建失败。
-- 为新的验证错误消息添加了国际化（i18n）支持。
+### Added
+- **Complete Docker Support**: Implemented one-click startup and cross-platform deployment, greatly simplifying development and usage barriers.
+- **Enhanced Package Name Validation**: Strengthened frontend and backend application package name validation to prevent build failures caused by Java reserved keywords.
+- **Internationalization Support**: Added i18n support for new validation error messages.
 
-### Changed (优化)
-- **优化 Docker 镜像**: 通过多阶段构建，将生产镜像体积减小超过50%。
-- **提升首次构建速度**: 通过在镜像中预置 Gradle，将首次构建时间从数分钟缩短至几十秒。
-- 调整了后端 Node.js 服务器的监听地址为 `0.0.0.0`，解决了在容器内的网络访问问题。
+### Changed
+- **Optimized Docker Image**: Reduced production image size by over 50% through multi-stage builds.
+- **Improved First Build Speed**: Pre-installed Gradle in the image, reducing first build time from minutes to seconds.
+- **Network Binding Fix**: Changed backend Node.js server listening address to `0.0.0.0`, resolving network access issues within containers.
 
-### Fixed (修复)
-- 修复了在特定网络环境下，Gradle 无法下载依赖的 TLS 协议兼容性问题。
-- 修复了 `@capacitor/assets` 工具因找不到 `manifest.json` 而报错的潜在问题。
-- 修复了因并发构建请求导致 Gradle 缓存文件锁定的问题，通过在前端禁用按钮和后端加固逻辑来防止重复提交。
+### Fixed
+- **TLS Protocol Compatibility**: Fixed Gradle dependency download issues in specific network environments due to TLS protocol compatibility problems.
+- **Capacitor Assets Tool**: Fixed potential errors with `@capacitor/assets` tool when `manifest.json` is not found.
+- **Concurrent Build Prevention**: Fixed Gradle cache file locking issues caused by concurrent build requests through frontend button disabling and backend logic reinforcement.
 
 ## [1.0.0] - 2024-02-XX
 
