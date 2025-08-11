@@ -5,6 +5,21 @@ All notable changes to the Web-to-APK project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.2] - 2025-08-10
+
+### Added
+- **Intelligent Error Translation**: Added smart build error categorization and translation system
+- **Enhanced Error Messages**: Added 8 new error message types with multi-language support
+- **Network Error Handling**: Improved network connection error detection and user feedback
+
+### Changed
+- **Language File Structure**: Renamed zh.json to zh-CN.json for proper locale naming
+- **Chinese Documentation**: Improved command descriptions in Chinese documentation
+
+### Fixed
+- **Version Display Consistency**: Fixed About page version display to show correct version number
+- **Chinese Command Syntax**: Replaced "open" commands with proper Chinese descriptions in documentation
+
 ## [1.1.1] - 2025-08-10
 
 ### Added
@@ -36,7 +51,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Capacitor Assets Tool**: Fixed potential errors with `@capacitor/assets` tool when `manifest.json` is not found.
 - **Concurrent Build Prevention**: Fixed Gradle cache file locking issues caused by concurrent build requests through frontend button disabling and backend logic reinforcement.
 
-## [1.0.0] - 2024-02-XX
+## [1.0.0] - 2025-08-08
 
 ### Added
 

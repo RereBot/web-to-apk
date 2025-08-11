@@ -103,7 +103,7 @@ cd web-to-apk
 docker-compose up -d
 
 # 访问 Web 界面
-open http://localhost:3000
+# 打开浏览器访问 http://localhost:3000
 ```
 
 #### 低内存配置（2-4GB 内存）
@@ -119,7 +119,7 @@ cd web-to-apk
 docker-compose -f docker-compose.low-memory.yml up -d
 
 # 访问 Web 界面
-open http://localhost:3000
+# 打开浏览器访问 http://localhost:3000
 ```
 
 **注意**: 如果使用低内存配置时遇到构建失败，建议升级系统内存或使用更强大的服务器。
