@@ -141,5 +141,14 @@
   "buildStageBuildingApkProgress": "正在编译APK，这可能需要几分钟...",
   "buildStageBuildingApkFinal": "正在完成APK编译...",
   "buildStageFinalizing": "正在复制APK...",
-  "buildStageCompleted": "构建完成！"
+  "buildStageCompleted": "构建完成！",
+  
+  "error.javaKeyword": "包名包含Java保留关键字。请为包名组件使用不同的名称。",
+  "error.outOfMemory": "由于内存不足导致构建失败。请尝试使用低内存配置或升级系统内存。",
+  "error.networkDependency": "下载构建依赖失败。请检查网络连接后重试。",
+  "error.gradleDaemon": "Gradle守护进程失败。这通常是临时问题，请重新尝试构建。",
+  "error.sdkMissing": "Android SDK组件缺失或配置不正确。请检查开发环境。",
+  "error.buildGeneric": "构建过程失败。请检查错误详情后重试。",
+  "error.networkConnection": "网络连接失败。请检查网络连接。",
+  "error.serverResponse": "服务器返回无效响应。请重试。"
 }

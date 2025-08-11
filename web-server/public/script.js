@@ -722,7 +722,18 @@ async function checkBuildStatus() {
                 showSuccess(result);
             } else if (result.status === 'error') {
                 clearInterval(statusCheckInterval);
-                showError(result.error);
+                
+                // Enhanced error handling with i18n support
+                let errorMessage = result.error;
+                if (result.error && typeof result.error === 'object' && result.error.messageKey) {
+                    // Use translated message if available
+                    errorMessage = t(result.error.messageKey, result.error.fallbackMessage || result.error.message || 'Build failed');
+                } else if (typeof result.error === 'string') {
+                    // Fallback to original string error
+                    errorMessage = result.error;
+                }
+                
+                showError(errorMessage);
             } else if (result.status === 'building') {
                 // Update progress bar and status message
                 const message = result.messageKey ? t(result.messageKey, 'Building...') : (result.message || t('buildingText', 'Building...'));
@@ -736,7 +747,18 @@ async function checkBuildStatus() {
     } catch (error) {
         console.error('Status check error:', error);
         clearInterval(statusCheckInterval);
-        showError(t('errorBuildStatusCheck', 'Failed to check build status: ') + error.message);
+        
+        // Enhanced network error handling
+        let errorMessage;
+        if (error.name === 'TypeError' && error.message.includes('fetch')) {
+            errorMessage = t('error.networkConnection', 'Network connection failed. Please check your internet connection.');
+        } else if (error.message.includes('non-JSON response')) {
+            errorMessage = t('error.serverResponse', 'Server returned an invalid response. Please try again.');
+        } else {
+            errorMessage = t('errorBuildStatusCheck', 'Failed to check build status: ') + error.message;
+        }
+        
+        showError(errorMessage);
     }
 }
 

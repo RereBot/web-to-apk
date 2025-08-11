@@ -142,5 +142,14 @@
   "buildStageBuildingApkProgress": "Compiling APK, this may take a few minutes...",
   "buildStageBuildingApkFinal": "Finalizing APK compilation...",
   "buildStageFinalizing": "Copying APK...",
-  "buildStageCompleted": "Build completed!"
+  "buildStageCompleted": "Build completed!",
+  
+  "error.javaKeyword": "Package name contains Java reserved keywords. Please use different names for package components.",
+  "error.outOfMemory": "Build failed due to insufficient memory. Try using the low-memory configuration or upgrade your system memory.",
+  "error.networkDependency": "Failed to download build dependencies. Please check your internet connection and try again.",
+  "error.gradleDaemon": "Gradle daemon process failed. This is usually a temporary issue - please try building again.",
+  "error.sdkMissing": "Android SDK components are missing or not properly configured. Please check your development environment.",
+  "error.buildGeneric": "Build process failed. Please check the error details and try again.",
+  "error.networkConnection": "Network connection failed. Please check your internet connection.",
+  "error.serverResponse": "Server returned an invalid response. Please try again."
 }

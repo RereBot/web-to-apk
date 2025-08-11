@@ -717,6 +717,39 @@ const generateAndroidThemes = async (tempDir, config) => {
   }
 };
 
+// ===== BUILD ERROR TRANSLATION FUNCTION =====
+const translateBuildError = (errorMessage) => {
+  const errorLower = errorMessage.toLowerCase();
+  
+  // Java keyword errors
+  if (errorLower.includes('is not a valid java package name') && errorLower.includes('keyword')) {
+    return { messageKey: 'error.javaKeyword', category: 'VALIDATION_ERROR' };
+  }
+  
+  // Memory errors
+  if (errorLower.includes('out of memory') || errorLower.includes('java heap space')) {
+    return { messageKey: 'error.outOfMemory', category: 'RESOURCE_ERROR' };
+  }
+  
+  // Network/dependency errors
+  if (errorLower.includes('could not resolve') || errorLower.includes('connection timed out')) {
+    return { messageKey: 'error.networkDependency', category: 'NETWORK_ERROR' };
+  }
+  
+  // Gradle daemon errors
+  if (errorLower.includes('gradle daemon') || errorLower.includes('daemon process')) {
+    return { messageKey: 'error.gradleDaemon', category: 'BUILD_ERROR' };
+  }
+  
+  // SDK/tools errors
+  if (errorLower.includes('sdk') && (errorLower.includes('not found') || errorLower.includes('missing'))) {
+    return { messageKey: 'error.sdkMissing', category: 'ENVIRONMENT_ERROR' };
+  }
+  
+  // Default fallback
+  return { messageKey: 'error.buildGeneric', category: 'BUILD_ERROR' };
+};
+
 // ===== UNIFIED BUILD FUNCTION =====
 const executeBuild = async (buildType, config, iconPath, keystorePath, outputDir) => {
   const tempDir = path.join(__dirname, 'temp', uuidv4());
@@ -1734,7 +1767,16 @@ const executeBuild = async (buildType, config, iconPath, keystorePath, outputDir
           console.log(`Gradle ${gradleCommand} completed successfully`);
           resolve();
         } else {
-          reject(new Error(`Gradle ${gradleCommand} process failed with exit code ${code}.\n\n--- Collected STDERR ---\n${errorOutput}`));
+          const rawError = `Gradle ${gradleCommand} process failed with exit code ${code}.\n\n--- Collected STDERR ---\n${errorOutput}`;
+          const translatedError = translateBuildError(rawError);
+          
+          // Create enhanced error object
+          const enhancedError = new Error(rawError);
+          enhancedError.messageKey = translatedError.messageKey;
+          enhancedError.category = translatedError.category;
+          enhancedError.exitCode = code;
+          
+          reject(enhancedError);
         }
       });
 
